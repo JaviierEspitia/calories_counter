@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2021-11-04
+  quantity_calories: 1
+  type: 
+  comment: MyString
+  user: one
+
+two:
+  day: 2021-11-04
+  quantity_calories: 1
+  type: 
+  comment: MyString
+  user: two
