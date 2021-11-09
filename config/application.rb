@@ -17,6 +17,7 @@ module Proyecto3
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = 'America/Bogota'
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
