@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'home#index'
-
+  # mostrar todos los registros de calorias
   get '/home', to:"home#index"
-  #ingresar calorias
-  get '/calories/new', to:"calories#new"
-  post '/calories', to:"calories#create"
+ 
+
+  resources :calories 
 end

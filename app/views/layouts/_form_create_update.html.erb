@@ -1,0 +1,25 @@
+<%= form_with(model:@calorie, local:true) do |form|  %>
+    <div style="margin-bottom:10px" >
+        <b><%=form.label :day, style:"margin-bottom:10px" %></b><br/>
+        <%=form.date_field :day %>
+    </div>
+    <div style="margin-bottom:10px">
+        <b><%= form.label :quantity_calories %></b><br/>
+        <%=form.number_field :quantity_calories %>
+    </div>
+    <div style="margin-bottom:10px">
+        <b><%= form.label :kind %></b><br/>
+        <%= form.select :kind, ["Ingested", "Burned"] %>
+    </div>
+    <div>
+        <%= hidden_field_tag 'calorie[user_id]', current_user.id  %>
+    </div>
+    <div>
+        <b><%= form.label :comment %></b><br/>
+        <%=form.text_field :comment %>
+    </div>
+    </br>
+    <div style="margin-left:auto;margin-right:auto;text-align:center">
+        <%= form.submit %>
+    </div>
+<% end %> 

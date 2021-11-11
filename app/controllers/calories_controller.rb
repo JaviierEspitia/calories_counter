@@ -4,20 +4,44 @@ class CaloriesController < ApplicationController
     end
 
     def create
-        date_choose = params[:calorie][:day]
-        date_choose = date_choose.to_date
-        puts "Haber la fecha de hoy #{Date.today} haber mi eleccion #{date_choose}"
-        if(date_choose > Date.today)
-            flash[:danger] = "Fecha escogida en el futuro"
+        @calorie = Calorie.new(calories_params)
+
+        if @calorie.save
+            flash[:success] = "Registro creado"
             redirect_to '/home'
         else
-            @calorie = Calorie.create(day: params[:calorie][:day], quantity_calories: params[:calorie][:quantity_calories],
-            kind: params[:calorie][:kind], user_id: params[:calorie][:user_id], comment: params[:calorie][:comment])
-            flash[:success] = "registro guardado"
+            flash[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
             redirect_to '/home'
-            
-        end
-        
-        
+        end  
     end
+
+    def edit 
+        @calorie = Calorie.find(params[:id])
+    end
+    
+    def update
+        @calorie = Calorie.find(params[:id])
+        if @calorie.update(calories_params)
+            flash[:success] = "Actualizado"
+            redirect_to '/home'
+        else
+            flash[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
+            redirect_to '/home'
+        end    
+    end
+    
+    def destroy
+        @calorie = Calorie.find(params[:id])
+        @calorie.destroy
+        flash[:success] = "Deleted"
+        redirect_to '/home'
+    end    
+
+    # SELECT SUM(quantity_calories) FROM Calories Where kind="Ingested" GROUP BY day
+    # Calorie.where(kind: "Ingested").group(:day).sum(:quantity_calories)
+    private
+    def calories_params
+        params.required(:calorie).permit(:id,:day,:quantity_calories,:kind,:user_id,:comment)
+    end
+    
 end
