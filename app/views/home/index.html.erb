@@ -9,6 +9,10 @@
 <body>
 
 <%= @user.name %>
+
+
+<%= line_chart @calories %>
+<input type="text" id="rangepicker"/>
 <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-6 col-lg-6 col-xl-8">
         <%= will_paginate @calorierender %>
@@ -31,7 +35,7 @@
                         <td><%= c.comment %></td>
                         <td>
                             <%= link_to 'Edit', edit_calory_path(c) , class:"btn btn-primary", style:"color:white" %>
-                            <%= link_to 'Delete', calory_path(c) , method: :delete, class:"btn btn-outline-danger" %>
+                            <%= link_to 'Delete', calory_path(c) , method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %>
                         </td>
                     </tr>
                 <% end %>
@@ -39,5 +43,13 @@
         </table>
     </div>
 </div>
+
+<script>
+    $("#rangepicker").daterangepicker({
+        opens: 'left'
+      }, function(start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      });    
+</script>
 </body>
 </html>

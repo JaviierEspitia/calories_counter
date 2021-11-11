@@ -11,6 +11,13 @@ import "channels"
 import 'bootstrap'
 import 'css/styles.scss'
 
+import "chartkick/chart.js"
+
+
+//= require jquery
+//= require daterangepicker
+//= require moment
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

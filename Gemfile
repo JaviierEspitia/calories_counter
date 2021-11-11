@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
+gem 'groupdate', '~> 2.5', '>= 2.5.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
