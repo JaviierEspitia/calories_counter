@@ -12,10 +12,14 @@
 
 
 <%= line_chart @calories %>
-<input type="text" id="rangepicker"/>
-<div class="row d-flex justify-content-center align-items-center h-100">
+<div class="d-flex justify-content-center" style="margin-top:80px">
+    <input type="text" id="rangepicker"/>
+</div>
+<div class="row d-flex justify-content-center align-items-center h-100 mt-3">
     <div class="col-12 col-md-6 col-lg-6 col-xl-8">
-        <%= will_paginate @calorierender %>
+        <div class="digg_pagination d-flex justify-content-center">
+            <%= will_paginate @calorierender %>
+        </div>    
         <table class="table">
             <thead class="bg-dark text-white">
                 <tr style="text-align:center">
@@ -51,7 +55,8 @@
 
 <script>
     $("#rangepicker").daterangepicker({
-        opens: 'left'
+        startDate: moment("<%= l @start_date, format:'%Y-%m-%d' %>"),
+        endDate : moment("<%= l @end_date, format:'%Y-%m-%d' %>")
       }, function(start, end, label) {
         $("#start").val(start.format('YYYY-MM-DD'));
         $("#end").val(end.format('YYYY-MM-DD'));

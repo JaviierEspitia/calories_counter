@@ -9,6 +9,10 @@ class Calorie < ApplicationRecord
   private
   def day_future
     
+    if self.kind != "Ingested" && self.kind != "Burned"
+      errors.add(:kind, message: "oops something went wrong")
+    end    
+
     if self.day > Date.today
       errors.add(:day, message: "chosen date in the future")
     end    

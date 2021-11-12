@@ -32,6 +32,8 @@ gem 'bootstrap-will_paginate'
 gem 'chartkick', '~> 1.4', '>= 1.4.1'
 gem 'groupdate', '~> 2.5', '>= 2.5.2'
 
+gem 'faker', '~> 2.19'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

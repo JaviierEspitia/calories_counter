@@ -5,15 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-fecha = Date.new(2021,07,01)
 tipo = ""
-123.times do |i|
-    calorias = rand(400)
+(4.months.ago.to_date..Date.current).each do |date|
+    calorias = rand(500)
     bandera = rand(2)
     if bandera == 1
         tipo = "Ingested"
     else
         tipo = "Burned"
-    end        
-    Calorie.create(day:fecha+i , quantity_calories: calorias, kind: tipo , user_id: 3, comment: "Comment #{i}")
+    end  
+    Calorie.create(day:date , quantity_calories: calorias, kind: tipo , user_id: 1, comment: Faker::Movie.title)
 end
