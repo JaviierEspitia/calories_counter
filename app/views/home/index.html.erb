@@ -11,7 +11,7 @@
 <%= @user.name %>
 
 
-<%= line_chart @calories %>
+<%= line_chart @calories, library: {spanGaps:true} %>
 <div class="d-flex justify-content-center" style="margin-top:80px">
     <input type="text" id="rangepicker"/>
 </div>
