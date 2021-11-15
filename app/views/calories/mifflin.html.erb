@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div class="card" style="width:600px; margin-left:auto; margin-top:50px; margin-right:auto">
+    <div class="card-header bg-dark text-white" style="text-align:center">
+    Calories
+    </div>
+    <div class="card-body">
+    <p>Conoce el numero de calorias consumidas a diario (Gasto energético basal).</p>
+    <form>
+        <div style="margin-bottom:10px">
+            <input type="number" id="mifflin_edad" placeholder="Ingresa tu edad" style="width:220px">
+        </div>
+        <div style="margin-bottom:10px">
+            <span style="margin-bottom:10px">Genero</span><br/>
+            <select id="genero" name="genero" style="margin-top:5px">
+                <option value="1" selected>Hombre</option>
+                <option value="2">Mujer</option>
+            </select>
+        </div>
+        <div style="margin-bottom:10px">
+        <input type="number" id="mifflin_estatura" placeholder="Ingresa tu estatura en cm" style="width:220px">
+        </div>
+        <div style="margin-bottom:10px">
+        <input type="number" id="mifflin_peso" placeholder="Ingresa tu peso en Kg" style="width:220px">
+        </div>
+        <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-dark" id="btn_enviar">Enviar</button>
+        </div>
+    </form>
+    </div>
+</div>
+<script>
+    resultado = 0
+    btn_enviar = document.getElementById("btn_enviar")
+    btn_enviar.addEventListener("click", function(){
+        edad = document.getElementById("mifflin_edad").value
+        list = document.getElementById("genero");
+        selected = list.options[list.selectedIndex].text;
+        estatura = document.getElementById("mifflin_estatura").value
+        peso = document.getElementById("mifflin_peso").value
+        if (peso != "" && selected != "" && estatura != "" && edad != ""){
+            if(selected == "Hombre"){
+                resultado = (10*peso)+(6.25*estatura)-(5*edad) + 5
+                alert("Tu Gasto energético basal (TMB) es "+resultado +"\n Resultado basado en la ecuación de Mifflin-St Jeor")
+            }else{
+                if(selected == "Mujer"){
+                    resultado = (10*peso)+(6.25*estatura)-(5*edad) -161
+                    alert("Tu Gasto energético basal (TMB) es "+resultado +"\n Resultado basado en la ecuación de Mifflin-St Jeor")
+                }
+                
+            }
+        } 
+
+    });
+</script>
+</body>
+</html>

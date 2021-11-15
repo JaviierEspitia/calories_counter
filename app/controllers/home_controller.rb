@@ -8,7 +8,7 @@ class HomeController < ApplicationController
         @end_date = params[:end_date].try(:to_date) || Date.current 
         range = (@start_date..@end_date)
 
-        words = params[:words_key]
+        words = params[:words_key] #comentario de busqueda
 
         # La fecha siempre cargara los ultimos treinta dias puesto que, si viene vacio a la variable
         # start date se le asigna 30 dias anteriores y end se le asigna la fecha actual
@@ -26,7 +26,6 @@ class HomeController < ApplicationController
             @calories = Calorie.where(user_id: id_user, day: range).group(:kind).group(:day).sum(:quantity_calories)
             @calorierender = Calorie.where(user_id: id_user, day: range).order(updated_at: :desc).paginate(page: params[:page])
         end    
-        
         
     end
 end

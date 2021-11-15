@@ -37,8 +37,8 @@ class CaloriesController < ApplicationController
         redirect_to '/home'
     end    
 
-
-     
+    def mifflin
+    end  
 
     # SELECT SUM(quantity_calories) FROM Calories Where kind="Ingested" GROUP BY day
     # Calorie.where(kind: "Ingested").group(:day).sum(:quantity_calories)

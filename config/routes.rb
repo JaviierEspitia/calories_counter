@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   
   patch '/graph_share_token', to: "graph_share#update"
 
+  #funcionalidad extra
+  get '/mifflin', to:"calories#mifflin"
+
 end

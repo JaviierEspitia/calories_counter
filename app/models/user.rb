@@ -22,4 +22,8 @@ class User < ApplicationRecord
     UserMailer.graph_subject(email, id_user).deliver_now
   end
 
+  def graph_token_expired?
+    graph_sent_at < 2.hours.ago
+  end
+
 end
