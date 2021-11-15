@@ -8,18 +8,8 @@
 </head>
 <body>
 
+<h1 style="text-align:center; margin-bottom:20px; margin-top:30px">Calories 30 days ago</h1>
+<%= line_chart @calories_share, library: {spanGaps:true} %>
 
-<div class="card" style="width:600px; margin-left:auto; margin-top:50px; margin-right:auto">
-    <div class="card-header bg-dark text-white" style="text-align:center">
-    Send email
-    </div>
-    <div class="card-body">
-        <%= form_tag graph_share_token_path, method: :patch do %>
-            <b>Email</b><br/>
-            <%= email_field_tag :email_friend %>
-            <%= submit_tag "Send" %>
-        <% end %>
-    </div>
-</div>
 </body>
 </html>

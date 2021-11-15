@@ -1,0 +1,9 @@
+<h1>Graph Share</h1>
+
+<p>To view the graph click the link below:</p>
+
+
+
+<%= link_to "Graph share", graph_share_url(token: @user.graph_token) %>
+
+<p>This link will expire in two hours.</p>

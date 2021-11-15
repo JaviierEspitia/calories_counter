@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :calories
   # vista protegida para compartir mi progreso
   get '/shareprogress' , to:"graph_share#share"
+
+  get '/graph_share', to:"graph_share#graph"
   
+  patch '/graph_share_token', to: "graph_share#update"
+
 end
