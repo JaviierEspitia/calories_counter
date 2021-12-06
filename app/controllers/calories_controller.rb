@@ -10,12 +10,16 @@ class CaloriesController < ApplicationController
             flash[:success] = "Registro creado"
             redirect_to '/home'
         else
-            flash[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
-            redirect_to '/home'
+            flash.now[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
+            render 'new'
         end  
     end
 
     def edit 
+        @calorie = Calorie.find(params[:id])
+    end
+
+    def show
         @calorie = Calorie.find(params[:id])
     end
     
@@ -25,8 +29,8 @@ class CaloriesController < ApplicationController
             flash[:success] = "Actualizado"
             redirect_to '/home'
         else
-            flash[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
-            redirect_to '/home'
+            flash.now[:danger] = "Error: #{@calorie.errors.full_messages.join(', ')}"
+            render 'edit'
         end    
     end
     

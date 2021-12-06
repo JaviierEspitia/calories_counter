@@ -4,9 +4,13 @@ class HomeController < ApplicationController
         id_user = current_user.id
         @user = User.find(id_user)
 
-        @start_date = params[:start_date].try(:to_date) || 30.days.ago.to_date #si el parametro no es nulo invoca a to_date
+        date_inicio = Calorie.find_by_sql("SELECT day FROM calories WHERE user_id = 3 ORDER BY day LIMIT 1")
+
+        @start_date = params[:start_date].try(:to_date) || date_inicio[0].day || 30.days.ago.to_date #si el parametro no es nulo invoca a to_date
         @end_date = params[:end_date].try(:to_date) || Date.current 
         range = (@start_date..@end_date)
+
+        #puts "Este es el rango de fechas #{date_inicio[0].day} y #{Date.current}"
 
         words = params[:words_key] #comentario de busqueda
 

@@ -46,6 +46,7 @@
                         <td><%= c.kind %></td>
                         <td><%= c.comment %></td>
                         <td>
+                            <%= link_to 'Show', calory_path(c) , class:"btn btn-primary", style:"color:white" %>
                             <%= link_to 'Edit', edit_calory_path(c) , class:"btn btn-primary", style:"color:white" %>
                             <%= link_to 'Delete', calory_path(c) , method: :delete, data: { confirm: "You sure?" }, class:"btn btn-outline-danger" %>
                         </td>

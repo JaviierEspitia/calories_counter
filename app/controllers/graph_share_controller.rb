@@ -20,13 +20,15 @@ class GraphShareController < ApplicationController
 
     def graph
         token = params[:token]#el token que recibo del parametro generado en la url del email enviado
-        start_date = 30.days.ago.to_date #si el parametro no es nulo invoca a to_date
+        start_date = 30.days.ago.to_date 
         end_date = Date.current
         range = (start_date..end_date)
         user = User.find_by(graph_token: "#{token}")
         check_expiration(user.id)
         @calories_share = Calorie.where(user_id: user.id, day: range).group(:kind).group(:day).sum(:quantity_calories)
     end
+
+    private
 
     def check_expiration(id_user)
         @user = User.find(id_user)
