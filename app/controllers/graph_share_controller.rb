@@ -18,7 +18,7 @@ class GraphShareController < ApplicationController
         end
     end
 
-    def graph
+    def index #metodo que genera la grafica compartida
         token = params[:token]#el token que recibo del parametro generado en la url del email enviado
         start_date = 30.days.ago.to_date 
         end_date = Date.current
